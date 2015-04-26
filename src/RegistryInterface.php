@@ -14,7 +14,7 @@ interface RegistryInterface {
 	 * @param mixed $value
 	 * @return void
 	 */
-	public static function add($path, $value = NULL);
+	public static function set($path, $value = NULL);
 
 	/**
 	 * @param string $path
