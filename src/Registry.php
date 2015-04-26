@@ -21,7 +21,7 @@ class Registry implements RegistryInterface {
 	 * @param mixed|null $value
 	 * @return void
 	 */
-	public static function add($path, $value = NULL) {
+	public static function set($path, $value = NULL) {
 		Arrays::setValueByPath(static::$storage, $path, $value);
 	}
 
