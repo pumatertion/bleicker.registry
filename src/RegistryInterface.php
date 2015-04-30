@@ -32,4 +32,9 @@ interface RegistryInterface {
 	 * @return static
 	 */
 	public static function prune();
+
+	/**
+	 * @return static
+	 */
+	public static function instance();
 }
