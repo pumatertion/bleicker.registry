@@ -16,6 +16,12 @@ class Registry implements RegistryInterface {
 	 */
 	public static $storage = [];
 
+	private function __construct() {
+	}
+
+	private function __clone() {
+	}
+
 	/**
 	 * @param string $path
 	 * @param mixed $value
@@ -41,6 +47,13 @@ class Registry implements RegistryInterface {
 	 */
 	public static function get($path) {
 		return Arrays::getValueByPath(static::$storage, $path);
+	}
+
+	/**
+	 * @return static
+	 */
+	public static function instance() {
+		return new static();
 	}
 
 	/**
