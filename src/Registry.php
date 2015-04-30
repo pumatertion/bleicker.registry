@@ -18,11 +18,21 @@ class Registry implements RegistryInterface {
 
 	/**
 	 * @param string $path
-	 * @param mixed|null $value
-	 * @return void
+	 * @param mixed $value
+	 * @return static
 	 */
-	public static function set($path, $value = NULL) {
+	public static function set($path, $value) {
 		Arrays::setValueByPath(static::$storage, $path, $value);
+		return new static;
+	}
+
+	/**
+	 * @param string $path
+	 * @return static
+	 */
+	public static function remove($path) {
+		Arrays::unsetValueByPath(static::$storage, $path);
+		return new static;
 	}
 
 	/**
@@ -34,9 +44,10 @@ class Registry implements RegistryInterface {
 	}
 
 	/**
-	 * @return void
+	 * @return static
 	 */
 	public static function prune() {
 		static::$storage = [];
+		return new static;
 	}
 }

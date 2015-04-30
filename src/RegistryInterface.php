@@ -12,9 +12,15 @@ interface RegistryInterface {
 	/**
 	 * @param string $path
 	 * @param mixed $value
-	 * @return void
+	 * @return static
 	 */
-	public static function set($path, $value = NULL);
+	public static function set($path, $value);
+
+	/**
+	 * @param string $path
+	 * @return static
+	 */
+	public static function remove($path);
 
 	/**
 	 * @param string $path
@@ -23,7 +29,7 @@ interface RegistryInterface {
 	public static function get($path);
 
 	/**
-	 * @return void
+	 * @return static
 	 */
 	public static function prune();
 }

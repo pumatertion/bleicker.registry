@@ -42,4 +42,24 @@ class RegistryTest extends UnitTestCase {
 		$this->assertEquals('added1', Registry::get('foo.bar.baz'));
 		$this->assertEquals('added2', Registry::get('bar.baz.foo'));
 	}
+
+	/**
+	 * @test
+	 */
+	public function removeTest() {
+		Registry::set('foo.bar.baz', 'added1');
+		Registry::set('bar.baz.foo', 'added2');
+		Registry::remove('foo.bar.baz');
+		$this->assertNull(Registry::get('foo.bar.baz'));
+		$this->assertNotNull(Registry::get('bar.baz.foo'));
+	}
+
+	/**
+	 * @test
+	 */
+	public function concatCallTest() {
+		Registry::set('foo.bar.baz', 'added1')->set('bar.baz.foo', 'added2');
+		$this->assertNotNull(Registry::get('foo.bar.baz'));
+		$this->assertNotNull(Registry::get('bar.baz.foo'));
+	}
 }
