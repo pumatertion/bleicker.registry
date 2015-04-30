@@ -48,4 +48,19 @@ class Arrays {
 			self::setValueByPath($subject[$key], implode(static::PATHSEPARATOR, $path), $value);
 		}
 	}
+
+	/**
+	 * @param array|\ArrayAccess $subject
+	 * @param string $path The path with keys seperated by . (foo.bar.baz)
+	 * @return void
+	 */
+	static public function unsetValueByPath(&$subject, $path) {
+		$path = explode('.', $path);
+		$key = array_shift($path);
+		if(count($path) > 0){
+			self::unsetValueByPath($subject[$key], implode(static::PATHSEPARATOR, $path));
+		}else{
+			unset($subject[$key]);
+		}
+	}
 }
