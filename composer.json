@@ -1,5 +1,6 @@
 {
 	"name": "bleicker/registry",
+	"type": "library",
 	"require": {
 	},
 	"require-dev": {
